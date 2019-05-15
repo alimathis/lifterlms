@@ -2,13 +2,17 @@
 /**
  * Plugin installation
  *
- * @since   1.0.0
- * @version 3.28.0
+ * @since 1.0.0
+ * @version [version]
  */
+
 defined( 'ABSPATH' ) || exit;
 
 /**
  * LLMS_Install.
+ *
+ * @since 1.0.0
+ * @since [version] Add `wp_lifterlms_events` table.
  */
 class LLMS_Install {
 
@@ -352,9 +356,11 @@ class LLMS_Install {
 
 	/**
 	 * Get a string of table data that can be passed to dbDelta() to install LLMS tables
-	 * @return   string
-	 * @since    3.0.0
-	 * @version  3.16.9
+	 *
+	 * @since 3.0.0
+	 * @since [version] Add `wp_lifterlms_events` table.
+	 *
+	 * @return string
 	 */
 	private static function get_schema() {
 
@@ -441,6 +447,18 @@ CREATE TABLE `{$wpdb->prefix}lifterlms_notifications` (
   KEY `status` (`status`),
   KEY `type` (`type`),
   KEY `subscriber` (`subscriber`(191))
+) $collate;
+CREATE TABLE `{$wpdb->prefix}lifterlms_events` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `date` datetime DEFAULT NULL,
+  `actor_id` bigint(20) DEFAULT NULL,
+  `object_type` varchar(55) DEFAULT NULL,
+  `object_id` bigint(20) DEFAULT NULL,
+  `event_type` varchar(55) DEFAULT NULL,
+  `event_action` varchar(55) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY actor_id (`actor_id`),
+  KEY object_id (`object_id`)
 ) $collate;
 ";
 
