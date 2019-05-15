@@ -92,6 +92,7 @@ final class LifterLMS {
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_action( 'init', array( $this, 'integrations' ), 1 );
 		add_action( 'init', array( $this, 'processors' ), 5 );
+		add_action( 'init', array( $this, 'events' ), 5 );
 		add_action( 'init', array( $this, 'include_template_functions' ) );
 		add_action( 'init', array( 'LLMS_Shortcodes', 'init' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_action_links' ), 10, 1 );
@@ -392,6 +393,7 @@ final class LifterLMS {
 		}
 
 		require_once 'includes/class-llms-grades.php';
+		require_once 'includes/class-llms-events.php';
 		require_once 'includes/class.llms.playnice.php';
 
 		$this->includes_theme_support();
@@ -483,6 +485,17 @@ final class LifterLMS {
 
 	public function engagements() {
 		return LLMS_Engagements::instance();
+	}
+
+	/**
+	 * Events instance.
+	 *
+	 * @since [version]
+	 *
+	 * @return LLMS_Events
+	 */
+	public function events() {
+		return LLMS_Events::instance();
 	}
 
 	/**
