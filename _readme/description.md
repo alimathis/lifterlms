@@ -21,7 +21,7 @@ _Increase your training program's value with these engagement add-ons_
 + [LifterLMS Social Learning][sl]
 + [LifterLMS Advanced Video][av] 
 + [LifterLMS Custom Fields][cf] 
-+ [LifterLMS Groups] [gr] 
++ [LifterLMS Groups][gr] 
 
 #### **Integrations**
 
